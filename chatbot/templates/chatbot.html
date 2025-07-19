@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Real Estate Chatbot</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfaf6;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chatbox {
+      width: 400px;
+      height: 600px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #1a2b4c;
+    }
+    .header {
+      background-color: #1a2b4c;
+      color: #fff;
+      padding: 16px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background-color: #fafafa;
+    }
+    .msg {
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 16px;
+      max-width: 80%;
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    .user {
+      background-color: #1a2b4c;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .bot {
+      background-color: #e7eaf0;
+      color: #111;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 14px;
+      font-size: 15px;
+      border: none;
+      outline: none;
+    }
+    .chat-input button {
+      padding: 0 20px;
+      background-color: #1a2b4c;
+      color: white;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .chat-input button:hover {
+      background-color: #14203a;
+    }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <div class="header">Real Estate Assistant</div>
+    <div class="chat-messages" id="messages">
+      <div class="msg bot">Hi there. How can I assist you with properties today?</div>
+    </div>
+    <div class="chat-input">
+      <input id="userInput" placeholder="Type your question..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const messagesDiv = document.getElementById("messages");
+    const input = document.getElementById("userInput");
+
+   function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.className = `msg ${sender}`;
+  msg.innerHTML = text.replace(/\n/g, "<br>"); // ✅ show new lines
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+    async function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      input.value = "";
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+      addMessage(data.response, "bot");
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+</html>
+
