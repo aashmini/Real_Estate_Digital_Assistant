@@ -1,3 +1,34 @@
+# 🏢 Real Estate Digital Assistant
+
+An AI-powered digital assistant designed to help commercial real estate brokers manage properties, clients, meetings, and market analytics seamlessly.
+
+---
+
+## 🚀 Features
+
+- 🔍 Property Management (Add, Edit, Delete, Search, Filter)
+- 👥 Client Onboarding and CRM Integration
+- 📊 Market Analysis and Insights
+- 📅 Meeting Scheduler with Calendar View
+- 💬 Emotion-Aware Interactions (Sentiment + Emotion Detection)
+- 🌱 Green Score & Sustainability Metrics
+- 🧠 AI-Powered Property Match Score
+- 📄 Automated Investment Deck & One-Pager Generation
+- 🗣️ Voice + Vernacular Language Support (e.g., Hindi, Telugu)
+- 🏠 3D Property Views and Virtual Tours
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Tailwind CSS, Shadcn/ui, Recharts  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB Atlas  
+- **AI/ML**: CLIP for visual similarity, NLP for sentiment & emotion detection  
+- **Additional**: react-big-calendar, Framer Motion
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
