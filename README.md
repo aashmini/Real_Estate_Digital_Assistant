@@ -27,14 +27,11 @@ An AI-powered digital assistant designed to help commercial real estate brokers 
 - **AI/ML**: CLIP for visual similarity, NLP for sentiment & emotion detection  
 - **Additional**: react-big-calendar, Framer Motion
 
-📌 Future Enhancements
-Broker Performance Dashboard
-
-Role-based Access Control
-
-Notification System
-
-Mobile App Version
+## 📌 Future Enhancements
+- Broker Performance Dashboard
+- Role-based Access Control
+- Notification System
+- Mobile App Version
 
 # React + Vite
 
